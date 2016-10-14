@@ -125,19 +125,19 @@
 
         gl.bindTexture(gl.TEXTURE_2D, textures[0]); //.... here, "bind" means "operate on this particular texture from the gpu for the next few instructions"
         gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, textures[0].image);
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST); // nearest
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST); // nearest (blocky when scaled up, can "twinkle" when scaled down and moving)
         gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST); // nearest
 
         gl.bindTexture(gl.TEXTURE_2D, textures[1]);
         gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, textures[1].image);
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR); // linear
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR); // linear interpolation (better when scaled up, but sharp edges can get blurred. Scaling down is no better than "nearest")
         gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR); // linear
 
         gl.bindTexture(gl.TEXTURE_2D, textures[2]);
         gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, textures[2].image);
         gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR); // linear
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_NEAREST); // linearmip
-        gl.generateMipmap(gl.TEXTURE_2D);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_NEAREST); // mipmaps (most complex - at various levels, generate average of a certain number of surrounding pixels.)
+        gl.generateMipmap(gl.TEXTURE_2D); // generate the mipmap
 
         gl.bindTexture(gl.TEXTURE_2D, null);
     }
@@ -158,8 +158,8 @@
             handleLoadedTexture(crateTextures)
         };
         /* crateImage.src = "crate.gif"; */
-        /* crateImage.src = "../steve.jpg"; */
-        crateImage.src = "../nigel.png";
+        crateImage.src = "../steve.jpg";
+        /* crateImage.src = "../nigel.png"; */
     }
 
 
