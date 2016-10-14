@@ -155,7 +155,9 @@
         crateImage.onload = function () {
             handleLoadedTexture(crateTextures)
         };
-        crateImage.src = "crate.gif";
+        /* crateImage.src = "crate.gif"; */
+        /* crateImage.src = "../steve.jpg"; */
+        crateImage.src = "../nigel.png";
     }
 
 
@@ -396,8 +398,8 @@
         if (lastTime != 0) {
             var elapsed = timeNow - lastTime;
 
-            xRot += (xSpeed * elapsed) / 1000.0;
-            yRot += (ySpeed * elapsed) / 1000.0;
+            xRot += (0.1 * xSpeed * elapsed) / 1000.0;
+            yRot += (0.1 * ySpeed * elapsed) / 1000.0;
         }
         lastTime = timeNow;
     }
