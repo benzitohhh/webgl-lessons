@@ -137,7 +137,9 @@
             handleLoadedTexture(neheTexture)
         };
 
-        neheTexture.image.src = "nehe.gif";
+        /* neheTexture.image.src = "nehe.gif"; */
+        /* neheTexture.image.src = "../nigel_po2.png"; */
+        neheTexture.image.src = "../steve_po2.jpg";
     }
 
 
@@ -324,9 +326,9 @@
         if (lastTime != 0) {
             var elapsed = timeNow - lastTime;
 
-            xRot += (90 * elapsed) / 1000.0;
-            yRot += (90 * elapsed) / 1000.0;
-            zRot += (90 * elapsed) / 1000.0;
+            xRot += (10 * elapsed) / 1000.0; // i.e. 10 degrees per second
+            yRot += (10 * elapsed) / 1000.0;
+            zRot += (10 * elapsed) / 1000.0;
         }
         lastTime = timeNow;
     }
