@@ -221,7 +221,7 @@
     var ySpeed = -10;
 
     // Update: z altered to approximate original scene.
-    var z = -0.8;
+    var z = -2;
 
 
     var currentlyPressedKeys = {};
@@ -483,6 +483,8 @@
 
     var lastTime = 0;
 
+    var zSpeed = Math.random() * 0.1;
+
     function animate() {
         var timeNow = new Date().getTime();
         if (lastTime != 0) {
@@ -490,6 +492,7 @@
 
             xRot += (xSpeed * elapsed) / 1000.0;
             yRot += (ySpeed * elapsed) / 1000.0;
+            z -= zSpeed;
         }
         lastTime = timeNow;
     }
