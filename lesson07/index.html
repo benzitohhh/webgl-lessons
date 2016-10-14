@@ -151,8 +151,8 @@
 
         gl.bindTexture(gl.TEXTURE_2D, texture);
         gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, texture.image);
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_NEAREST);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR); // linear
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_NEAREST); // mip map
         gl.generateMipmap(gl.TEXTURE_2D);
 
         gl.bindTexture(gl.TEXTURE_2D, null);
@@ -168,7 +168,10 @@
             handleLoadedTexture(crateTexture)
         };
 
-        crateTexture.image.src = "crate.gif";
+        /* crateTexture.image.src = "crate.gif"; */
+        /* crateTexture.image.src = "../nigel.png"; */
+        crateTexture.image.src = "../steve.jpg";
+        /* crateTexture.image.src = "../mari.jpg"; */
     }
 
 
@@ -212,13 +215,13 @@
 
 
     var xRot = 0;
-    var xSpeed = 3;
+    var xSpeed = 30;
 
     var yRot = 0;
-    var ySpeed = -3;
+    var ySpeed = -10;
 
     // Update: z altered to approximate original scene.
-    var z = -3.9;
+    var z = -0.8;
 
 
     var currentlyPressedKeys = {};
@@ -539,13 +542,13 @@
             <td><b>Direction:</b>
             <td>X: <input type="text" id="lightDirectionX" value="-0.25" />
             <td>Y: <input type="text" id="lightDirectionY" value="-0.25" />
-            <td>Z: <input type="text" id="lightDirectionZ" value="-1.0" />
+            <td>Z: <input type="text" id="lightDirectionZ" value="0.1" />
         </tr>
         <tr>
             <td><b>Colour:</b>
             <td>R: <input type="text" id="directionalR" value="0.8" />
-            <td>G: <input type="text" id="directionalG" value="0.8" />
-            <td>B: <input type="text" id="directionalB" value="0.8" />
+            <td>G: <input type="text" id="directionalG" value="0.0" />
+            <td>B: <input type="text" id="directionalB" value="0.0" />
         </tr>
     </table>
 
