@@ -191,7 +191,7 @@
     var zoom = -5;
 
 
-    var tilt = 45;
+    var tilt = 90;
     var spin = 0;
 
 
@@ -292,7 +292,7 @@
             drawStar();
         }
 
-        // All stars spin around the Z axis at the same rate
+        // All stars spin around the Z axis at the same rate (i.e. spin value may be different, but it changes at the same rate for each star)
         mat4.rotate(mvMatrix, mvMatrix, degToRad(spin), [0.0, 0.0, 1.0]);
 
         // Draw the star in its main color
@@ -338,7 +338,7 @@
     var stars = [];
 
     function initWorldObjects() {
-        var numStars = 12;
+        var numStars = 20;
 
         for (var i=0; i < numStars; i++) {
             stars.push(new Star((i / numStars) * 5.0, i / numStars));
@@ -363,7 +363,7 @@
         var twinkle = document.getElementById("twinkle").checked;
         for (var i in stars) {
             stars[i].draw(tilt, spin, twinkle);
-            spin += 0.1;
+            spin += 0.1; // all stars spin at the same RATE (but with a spread of spin values on each drawScene())
         }
 
     }
