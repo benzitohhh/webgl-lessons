@@ -141,7 +141,8 @@
             handleLoadedTexture(starTexture)
         };
 
-        starTexture.image.src = "star.gif";
+        /* starTexture.image.src = "star.gif"; */
+        starTexture.image.src = "../mari.jpg";
     }
 
 
@@ -187,10 +188,10 @@
     }
 
 
-    var zoom = -12;
+    var zoom = -5;
 
 
-    var tilt = 90;
+    var tilt = 45;
     var spin = 0;
 
 
@@ -337,7 +338,7 @@
     var stars = [];
 
     function initWorldObjects() {
-        var numStars = 50;
+        var numStars = 12;
 
         for (var i=0; i < numStars; i++) {
             stars.push(new Star((i / numStars) * 5.0, i / numStars));
