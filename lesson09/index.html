@@ -141,8 +141,7 @@
             handleLoadedTexture(starTexture)
         };
 
-        /* starTexture.image.src = "star.gif"; */
-        starTexture.image.src = "../mari.jpg";
+        starTexture.image.src = "star.gif";
     }
 
 
@@ -188,7 +187,7 @@
     }
 
 
-    var zoom = -5;
+    var zoom = -12;
 
 
     var tilt = 90;
@@ -292,7 +291,7 @@
             drawStar();
         }
 
-        // All stars spin around the Z axis at the same rate (i.e. spin value may be different, but it changes at the same rate for each star)
+        // All stars spin around the Z axis at the same rate
         mat4.rotate(mvMatrix, mvMatrix, degToRad(spin), [0.0, 0.0, 1.0]);
 
         // Draw the star in its main color
@@ -338,7 +337,7 @@
     var stars = [];
 
     function initWorldObjects() {
-        var numStars = 20;
+        var numStars = 50;
 
         for (var i=0; i < numStars; i++) {
             stars.push(new Star((i / numStars) * 5.0, i / numStars));
@@ -363,7 +362,7 @@
         var twinkle = document.getElementById("twinkle").checked;
         for (var i in stars) {
             stars[i].draw(tilt, spin, twinkle);
-            spin += 0.1; // all stars spin at the same RATE (but with a spread of spin values on each drawScene())
+            spin += 0.1;
         }
 
     }
