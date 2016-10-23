@@ -190,7 +190,8 @@
     var zoom = -12;
 
 
-    var tilt = 90;
+    //var tilt = 90;
+    var tilt = 0;
     var spin = 0;
 
 
@@ -264,7 +265,10 @@
     function Star(startingDistance, rotationSpeed) {
         this.angle = 0;
         this.dist = startingDistance;
-        this.rotationSpeed = rotationSpeed;
+        this.rotationSpeed = rotationSpeed; // Rotation speed stays constant!
+                                            // (even when dist is reassigned).
+                                            // The interplay between rotSpeed and distance
+                                            // is what causes the variety of configurations over time.
 
         // Set the colors to a starting value.
         this.randomiseColors();
@@ -282,8 +286,8 @@
         mat4.translate(mvMatrix, mvMatrix, [this.dist, 0.0, 0.0]);
 
         // Rotate back so that the star is facing the viewer
-        mat4.rotate(mvMatrix, mvMatrix, degToRad(-this.angle), [0.0, 1.0, 0.0]);
-        mat4.rotate(mvMatrix, mvMatrix, degToRad(-tilt), [1.0, 0.0, 0.0]);
+        //mat4.rotate(mvMatrix, mvMatrix, degToRad(-this.angle), [0.0, 1.0, 0.0]);
+        //mat4.rotate(mvMatrix, mvMatrix, degToRad(-tilt), [1.0, 0.0, 0.0]);
 
         if (twinkle) {
             // Draw a non-rotating star in the alternate "twinkling" color
@@ -340,6 +344,7 @@
         var numStars = 50;
 
         for (var i=0; i < numStars; i++) {
+                                // startingDistance,  rotationSpeed
             stars.push(new Star((i / numStars) * 5.0, i / numStars));
         }
     }
@@ -362,7 +367,7 @@
         var twinkle = document.getElementById("twinkle").checked;
         for (var i in stars) {
             stars[i].draw(tilt, spin, twinkle);
-            spin += 0.1;
+            spin -= 0.1;
         }
 
     }
