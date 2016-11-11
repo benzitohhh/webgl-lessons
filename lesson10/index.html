@@ -139,6 +139,7 @@
 
         /* mudTexture.image.src = "mud.gif";*/
         mudTexture.image.src = "../mari.jpg";
+        /* mudTexture.image.src = "../steve.jpg";*/
     }
 
 
@@ -302,7 +303,7 @@
         // Update: mat4.rotate(mvMatrix, degToRad(-pitch), [1, 0, 0]); mat4.rotate() API has changed to mat4.rotate(out, a, rad, axis)
         // where out is the receiving matrix and a is the matrix to rotate.
         mat4.rotate(mvMatrix, mvMatrix, degToRad(-pitch), [1, 0, 0]);
-        mat4.rotate(mvMatrix, mvMatrix, degToRad(-yaw), [0, 1, 0]);
+        mat4.rotate(mvMatrix, mvMatrix, degToRad(- yaw), [0, 1, 0]);
         // Update: mat4.translate(mvMatrix, [-xPos, -yPos, -zPos]); mat4.translate() API has changed to mat4.translate(out, a, v)
         // where out is the receiving matrix, a is the matrix to translate, and v is the vector to translate by.
         mat4.translate(mvMatrix, mvMatrix, [-xPos, -yPos, -zPos]);
@@ -333,7 +334,14 @@
 
             if (speed != 0) {
                 xPos -= Math.sin(degToRad(yaw)) * speed * elapsed;
-                zPos -= Math.cos(degToRad(yaw)) * speed * elapsed;
+                zPos -= Math.cos(degToRad(yaw)) * speed * elapsed; // move forward/back
+
+                // i.e. we need this trig stuff so that forward/back is relative to the user orientation (yaw)
+                // i.e. these translations are applied before the "yaw" rotation (around the y axis)
+                // i.e. with yaw=0,   zPos is 1*..., xPos is 0*...
+                // i.e. with yaw=90,  zPos is 0*..., xPos is 1*...
+                // i.e. with yaw=180, zPos is -1*.., xPos is 0*...
+                // i.e. with yaw=270, zPos is 0*..., xPos is -1*..
 
                 joggingAngle += elapsed * 0.6; // 0.6 "fiddle factor" - makes it feel more realistic :-)
                 yPos = Math.sin(degToRad(joggingAngle)) / 20 + DEFAULT_Y_POS

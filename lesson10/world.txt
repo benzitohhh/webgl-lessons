@@ -1,6 +1,10 @@
 
 NUMPOLLIES 36
 
+// (vertex  )  (texture)
+// x, y,   z,  s,  t
+
+
 // Floor 1
 -3.0  0.0 -3.0 0.0 6.0
 -3.0  0.0  3.0 0.0 0.0
