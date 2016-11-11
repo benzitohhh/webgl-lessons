@@ -166,8 +166,9 @@
             handleLoadedTexture(moonTexture)
         };
 
-        moonTexture.image.src = "moon.gif";
+        /* moonTexture.image.src = "moon.gif";*/
         /* moonTexture.image.src = "../mari.jpg";*/
+        moonTexture.image.src = "../mariwide.jpg";
     }
 
 
@@ -259,8 +260,14 @@
     var moonVertexIndexBuffer;
 
     function initBuffers() {
-        var latitudeBands = 30;
-        var longitudeBands = 30;
+        var NUM_BANDS = 30;
+
+        /* var latitudeBands = 30;
+         * var longitudeBands = 30;*/
+
+        var latitudeBands = NUM_BANDS;
+        var longitudeBands = NUM_BANDS;
+
         var radius = 2;
 
         var vertexPositionData = [];
