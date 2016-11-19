@@ -40,6 +40,10 @@
             float shininess = 32.0;
             if (uUseSpecularMap) {
                 shininess = texture2D(uSpecularMapSampler, vec2(vTextureCoord.s, vTextureCoord.t)).r * 255.0;
+                // the larger this number, the smaller the specularLightWeighting...
+                // i.e. on our specular map:
+                //      "white" will result in low specularLightWeighting (not so shiny)
+                //      "dark grey" will result in high specularLightWeighting (super shiny)
             }
             if (shininess < 255.0) {
                 vec3 eyeDirection = normalize(-vPosition.xyz);
